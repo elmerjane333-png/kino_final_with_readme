@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero public-hero fade-in-up">
+  <div class="hero-left fade-in-up" style="animation-delay:.2s">
+    <h1 class="hero-title">Let's see if you are intelligent…</h1>
+    <p class="hero-sub">Grow. Play. Win. Join now — earn coins, grow for free.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+      <a class="btn btn-outline" href="{{ url_for('signup') }}">Sign Up</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in-up" style="animation-delay:.4s">
+    <div class="floating-card insta-preview">
+      <div class="insta-header">Public feed • minimal preview</div>
+      <div class="insta-grid">
+        <div class="tile tile1"></div>
+        <div class="tile tile2"></div>
+        <div class="tile tile3"></div>
+        <div class="tile tile4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

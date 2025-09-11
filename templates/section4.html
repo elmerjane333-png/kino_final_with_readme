@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Referrer IKC</h2>
+<p>Provide the IKC code of the referrer to allow them withdraw earnings.</p>
+<form id="ikc-form">
+  <input name="ikc" placeholder="IKC code" required>
+  <button class="btn">Done</button>
+</form>
+<div id="ikc-result"></div>
+<script>
+$('#ikc-form').on('submit', function(e){
+  e.preventDefault();
+  var data = $(this).serialize();
+  $('#ikc-result').html('<div class="loader"></div> Sending...');
+  $.post('', data, function(resp){
+    $('#ikc-result').html('Sent to admin.');
+  });
+});
+</script>
+{% endblock %}

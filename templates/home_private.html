@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="dashboard">
+  <div class="dashboard-header">
+    <div class="welcome">
+      <h2>Welcome, <span id="display-name">{{ user.username or user.contact }}</span></h2>
+      <div class="muted small">Cloud-milk bright dashboard — enjoy the animations ✨</div>
+    </div>
+    <div class="dash-actions">
+      <div class="coins">Coins: <span id="coins">15</span></div>
+    </div>
+  </div>
+  <div class="dash-grid">
+    <article class="card gold fade-in-up">
+      <h3>Answer questions — Boost followers</h3>
+      <p>From 50 to 350k followers.</p>
+      <a class="btn" href="{{ url_for('section1_question') }}">Click to answer question</a>
+    </article>
+    <article class="card silver fade-in-up">
+      <h3>Answer questions — Get verified</h3>
+      <p>Verify your account on any social platform.</p>
+      <a class="btn" href="{{ url_for('section2_question') }}">Click to answer question</a>
+    </article>
+    <article class="card caramel fade-in-up">
+      <h3>Answer to win Money</h3>
+      <div class="loader infinite small"></div>
+      <p class="muted">This section is not available now, please wait or use other sections, thank you.</p>
+    </article>
+    <article class="card ikc fade-in-up">
+      <h3>Referrer IKC</h3>
+      <form id="ikc-form">
+        <input name="ikc" placeholder="Referrer IKC code" required>
+        <button type="submit" class="btn">Done</button>
+      </form>
+      <div id="ikc-result" class="muted"></div>
+    </article>
+  </div>
+</section>
+<script>
+$('#ikc-form').on('submit', function(e){
+  e.preventDefault();
+  var ikc = $(this).find('[name=ikc]').val().trim();
+  if(!ikc) return alert('Enter IKC');
+  $('#ikc-result').html('<div class="loader"></div>');
+  $.post('{{ url_for("section4") }}', {ikc: ikc}, function(){ $('#ikc-result').html('<div class="success">IKC sent to admin.</div>'); });
+});
+</script>
+{% endblock %}

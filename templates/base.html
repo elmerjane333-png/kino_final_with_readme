@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title if title else 'Skino' }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+</head>
+<body class="theme-auto">
+  <button id="theme-toggle" title="Toggle theme">🌙</button>
+
+  <header class="site-header">
+    <div class="brand">Skino</div>
+    <div class="header-center">
+      <div id="greeting-block" class="greeting-block">
+        <div id="greet-text" class="greet-text">Hello Guest 👋</div>
+        <div id="greet-quote" class="greet-quote">✨ Inspire yourself — rotating quotes...</div>
+      </div>
+      <div id="tiny-clock" class="tiny-clock">--:--</div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-link" href="{{ url_for('public_home') }}">Home</a>
+      {% if user %}
+        <a class="nav-link" href="{{ url_for('dashboard') }}">My Home</a>
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+        <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main id="main" class="page-container">{% block content %}{% endblock %}</main>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>

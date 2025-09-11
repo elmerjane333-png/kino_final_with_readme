@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: kino-final-app
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    buildCommand: echo 'Docker build'
+    startCommand: ./start.sh
+databases:
+  - name: kino-final-db
+    plan: free

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>How many months do we have in 2 years?</h2>
+<input id="answer" placeholder="Type your answer...">
+<button id="check" class="btn">Check</button>
+<div id="result"></div>
+<script>
+$('#check').on('click', function(){
+  const ans = $('#answer').val();
+  $.post('', { answer: ans }, function(resp){
+    if(resp.ok){
+      $('#result').html('🎉 Correct! Redirecting...');
+      setTimeout(()=> window.location.href = "{{ url_for('section1_details') }}", 700);
+    } else {
+      $('#result').html('😂 Try again...');
+      setTimeout(()=> $('#result').html(''), 5000);
+    }
+  });
+});
+</script>
+{% endblock %}
