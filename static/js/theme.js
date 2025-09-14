@@ -1,36 +1,24 @@
-// Detect system preference first
-function getSystemTheme() {
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
-  return "light";
-}
+// theme.js
 
-function applyTheme(theme) {
-  document.body.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-}
-
-// Load saved theme or fallback to system
-function loadTheme() {
-  const saved = localStorage.getItem("theme");
-  if (saved) {
-    applyTheme(saved);
-  } else {
-    applyTheme(getSystemTheme());
-  }
-}
-
-// Toggle between themes
 function toggleTheme() {
-  const current = document.body.getAttribute("data-theme");
-  let next;
-  if (current === "light") next = "dark";
-  else if (current === "dark") next = "gradient";
-  else next = "light"; // cycle back
-  applyTheme(next);
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+
+  // save preference
+  const isDark = body.classList.contains("dark-mode");
+  localStorage.setItem("Facebook-theme", isDark ? "dark" : "light");
 }
 
-// On page load
 document.addEventListener("DOMContentLoaded", () => {
-  loadTheme();
-  document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+  // load saved preference
+  const saved = localStorage.getItem("Facebook-theme");
+  if (saved === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  // add a toggle button listener if one exists
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", toggleTheme);
+  }
 });
