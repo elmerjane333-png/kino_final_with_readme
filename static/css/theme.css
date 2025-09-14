@@ -1,38 +1,64 @@
-/* Smooth transitions */
-body {
-  transition: background 0.5s, color 0.5s;
+.fb-style {
+  background:#f0f2f5;
 }
-
-/* Light Theme */
-body[data-theme="light"] {
-  background: #fafafa;
-  color: #333;
+.login-page {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
 }
-
-/* Dark Theme */
-body[data-theme="dark"] {
-  background: #121212;
-  color: #eee;
+.logo-block {
+  text-align:center;
+  margin-bottom:20px;
 }
-
-/* Gradient Theme (Instagram-like) */
-body[data-theme="gradient"] {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-  color: white;
+.logo-circle {
+  width:80px; height:80px;
+  border-radius:50%;
+  background:#1877f2;
+  display:flex; align-items:center; justify-content:center;
+  font-size:44px;
+  font-weight:700;
+  color:white;
+  margin:0 auto 8px;
 }
-
-/* Toggle Button */
-#theme-toggle {
-  position: fixed;
-  top: 10px;
-  right: 15px;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  transition: transform 0.3s;
+.brand {
+  font-size:36px;
+  font-weight:700;
+  color:#1877f2;
+  font-family:sans-serif;
 }
-#theme-toggle:hover {
-  transform: rotate(180deg);
+.form-card {
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  width:350px;
+  text-align:center;
+}
+.input {
+  width:100%; padding:12px; margin-bottom:12px;
+  border:1px solid #ddd; border-radius:6px;
+}
+.btn-primary {
+  width:100%;
+  background:#1877f2; color:white;
+  border:none; border-radius:6px;
+  padding:12px; font-size:16px;
+  cursor:pointer;
+}
+.link-forgot {
+  display:block;
+  margin:12px 0;
+  color:#1877f2;
+}
+.btn-create {
+  display:inline-block;
+  background:#42b72a; color:white;
+  padding:12px 16px; border-radius:6px;
+  font-weight:600; margin-top:8px;
+}
+.footer-note {
+  margin-top:30px;
+  color:#65676b;
 }
